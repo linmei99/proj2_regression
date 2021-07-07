@@ -1,0 +1,34 @@
+                           Regression Course Project Plan
+
+Design:
+Do momentum exist in sporting events? How closely are the four quarters in a basketball games related to each other? Can rookie players maintain their play as well as more experienced players over the courses of an entire game?
+This project attempts to give actual evidences in answering these questions, by examining point differentials scored in the last quarter in a NBA game, in relationship with the point differentials in the earlier quarters, and the experience of the players involved.
+
+Data:
+The primary data are acquired through web scraping using basketball-reference.com. The data obtained cover all games over 3 entire NBA seasons from 2016-2019, a total of 3600+ games. To avoid selection bias, only regular season games in a season are included. 
+
+For each game, the point differentials, between points scored by the home team and points scored by the visiting team, in each quarters are recorded. Also, the top 8 players of each team, in terms of minutes played in that quarter, are recorded. The age of each of those players, the total games played in the season, and the minutes played in the preceeding quarters are recorded as features to serve as the indicator of experience/fatigue  in this project. The number of games played serves as a proxy of the practise time of the players in the season, which is not available directly.
+
+ 
+Algorithms:
+After data is acquired, linear regression models, with regulation, are used to examine the data. Polynomial terms are also examined to see its impact on the linear regression.
+
+StatModels are used to examine the resulting parameters's statistical significance.
+
+Tools:
+
+Web scraping is performed using BeautifulSoup with html5lib. The scraping output is saved into SQLite database. The linear regression is performed using StatModel. 
+
+Results:
+Based on the results, the linear regression has very low R2 values for the points scored as the target value. R2 are very close to 0, in the range of 0.02. 
+
+When polynomial terms are added, the R2 values drop to -0.3 to -0.4 ranges, indicating overfitting the model and picking up noise and causing the test set result to become worse.  
+
+With just regular terms, the t values indicated by statmodels indicated that only a few terms are statistical significant. The point scored by the home team, is positivly co-related to the points scored by the visiting team in the first quarter. 
+
+The coorlation between points in the 1st quarter and 2nd quarter are quite smaller. This implication is that a change in strategy in the 2nd quarter to the other's operation.  
+
+
+
+
+
